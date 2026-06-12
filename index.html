@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini-Browser</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Werkzeugleiste: Navigation + Adresszeile + "Neuer Tab"-Fallback -->
+  <header id="toolbar">
+    <button id="back-btn" title="Zurück" aria-label="Zurück" disabled>&larr;</button>
+    <button id="forward-btn" title="Vorwärts" aria-label="Vorwärts" disabled>&rarr;</button>
+    <input
+      id="url-input"
+      type="text"
+      placeholder="URL eingeben, z. B. wikipedia.org"
+      autocomplete="off"
+      spellcheck="false"
+    />
+    <button id="go-btn">Los</button>
+
+    <!-- Immer verfügbarer Ausweg: falls eine Seite sich nicht einbetten
+         lässt, kann man sie hier in einem normalen Tab öffnen.
+         Ohne Backend können wir das Blockieren nicht zuverlässig
+         erkennen – also bieten wir den Ausweg einfach immer an. -->
+    <a id="new-tab-link" class="disabled" href="#" target="_blank" rel="noopener"
+       title="In neuem Tab öffnen" aria-label="In neuem Tab öffnen">&#8599;</a>
+  </header>
+
+  <main id="frame-container">
+    <iframe
+      id="browser-frame"
+      title="Eingebettete Seite"
+      sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals"
+    ></iframe>
+
+    <div id="placeholder">
+      <p>Gib oben eine URL ein und klicke auf „Los“, um eine Seite zu laden.</p>
+      <p class="hint">Hinweis: Manche Seiten (z. B. Google, Instagram, Facebook)
+         lassen sich aus Sicherheitsgründen grundsätzlich nicht einbetten und
+         bleiben dann leer. Nutze in dem Fall den Pfeil-Button oben rechts,
+         um die Seite in einem neuen Tab zu öffnen.</p>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
