@@ -1,0 +1,114 @@
+/* Grund-Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #1f1f1f;
+}
+
+/* --- Werkzeugleiste --- */
+#toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  background: #f3f3f3;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+/* Buttons und der "Neuer Tab"-Link teilen sich das Aussehen */
+#toolbar button,
+#toolbar a {
+  flex: 0 0 auto;
+  min-width: 40px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #c9c9c9;
+  border-radius: 6px;
+  background: #ffffff;
+  font-size: 16px;
+  text-decoration: none;
+  color: #1f1f1f;
+  cursor: pointer;
+}
+
+#toolbar button:hover:not(:disabled),
+#toolbar a:hover {
+  background: #ececec;
+}
+
+#toolbar button:disabled,
+#toolbar a.disabled {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+}
+
+#toolbar button:focus-visible,
+#toolbar a:focus-visible,
+#url-input:focus-visible {
+  outline: 2px solid #4a90e2;
+  outline-offset: 1px;
+}
+
+#url-input {
+  flex: 1;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid #c9c9c9;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+#go-btn {
+  padding: 0 18px;
+  font-weight: 600;
+}
+
+/* --- Anzeigebereich --- */
+#frame-container {
+  flex: 1;
+  position: relative;
+}
+
+#browser-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: none; /* wird per JS sichtbar gemacht, sobald geladen wird */
+}
+
+#placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 32px;
+  gap: 12px;
+}
+
+#placeholder p {
+  max-width: 480px;
+  line-height: 1.5;
+  color: #555;
+}
+
+#placeholder .hint {
+  font-size: 13px;
+  color: #888;
+}
